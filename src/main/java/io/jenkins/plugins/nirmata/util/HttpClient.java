@@ -14,9 +14,6 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.jenkins.plugins.nirmata.model.HTTPInfo;
 
 public abstract class HttpClient {

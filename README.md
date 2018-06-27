@@ -1,4 +1,4 @@
-# Nirmata Jenkins Plugin
+# Nirmata Plugin
 ------------
 This plugin enables synchronization of YAML/JSON files stored in a Git repository with a Kubernetes application managed on the Nirmata platform.
 

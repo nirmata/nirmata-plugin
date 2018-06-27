@@ -13,7 +13,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import hudson.AbortException;
-import hudson.model.TaskListener;
 import io.jenkins.plugins.nirmata.model.HTTPInfo;
 import io.jenkins.plugins.nirmata.model.Model;
 import io.jenkins.plugins.nirmata.model.Response;

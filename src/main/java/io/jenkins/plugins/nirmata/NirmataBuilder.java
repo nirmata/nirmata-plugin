@@ -44,95 +44,95 @@ public class NirmataBuilder extends Builder implements SimpleBuildStep {
 
     private static final Logger logger = LoggerFactory.getLogger(NirmataBuilder.class);
 
-    private final String actionType;
-    private final String endpoint;
-    private final String apikey;
-    private final String environment;
-    private final String application;
-    private final String catalog;
-    private final String runname;
-    private final String deleteapp;
-    private final String timeout;
-    private final String directories;
-    private final boolean includescheck;
-    private final String includes;
-    private final boolean excludescheck;
-    private final String excludes;
+    private final String _actionType;
+    private final String _endpoint;
+    private final String _apikey;
+    private final String _environment;
+    private final String _application;
+    private final String _catalog;
+    private final String _runname;
+    private final String _deleteapp;
+    private final String _timeout;
+    private final String _directories;
+    private final boolean _includescheck;
+    private final String _includes;
+    private final boolean _excludescheck;
+    private final String _excludes;
 
     public String getActionType() {
-        return actionType;
+        return _actionType;
     }
 
     public String getEndpoint() {
-        return endpoint;
+        return _endpoint;
     }
 
     public String getApikey() {
-        return apikey;
+        return _apikey;
     }
 
     public String getEnvironment() {
-        return environment;
+        return _environment;
     }
 
     public String getApplication() {
-        return application;
+        return _application;
     }
 
     public String getCatalog() {
-        return catalog;
+        return _catalog;
     }
 
     public String getRunname() {
-        return runname;
+        return _runname;
     }
 
     public String getDeleteapp() {
-        return deleteapp;
+        return _deleteapp;
     }
 
     public String getTimeout() {
-        return timeout;
+        return _timeout;
     }
 
     public String getDirectories() {
-        return directories;
+        return _directories;
     }
 
     public boolean isIncludescheck() {
-        return includescheck;
+        return _includescheck;
     }
 
     public String getIncludes() {
-        return includes;
+        return _includes;
     }
 
     public boolean isExcludescheck() {
-        return excludescheck;
+        return _excludescheck;
     }
 
     public String getExcludes() {
-        return excludes;
+        return _excludes;
     }
 
     @DataBoundConstructor
     public NirmataBuilder(String actionType, String endpoint, String apikey, String environment, String application,
         String catalog, String runname, String deleteapp, String timeout, String directories, boolean includescheck,
         String includes, boolean excludescheck, String excludes) {
-        this.actionType = actionType;
-        this.endpoint = endpoint;
-        this.apikey = apikey;
-        this.environment = environment;
-        this.application = application;
-        this.catalog = catalog;
-        this.runname = runname;
-        this.deleteapp = deleteapp;
-        this.timeout = timeout;
-        this.directories = directories;
-        this.includescheck = includescheck;
-        this.includes = !includescheck ? null : includes;
-        this.excludescheck = excludescheck;
-        this.excludes = !excludescheck ? null : excludes;
+        this._actionType = actionType;
+        this._endpoint = endpoint;
+        this._apikey = apikey;
+        this._environment = environment;
+        this._application = application;
+        this._catalog = catalog;
+        this._runname = runname;
+        this._deleteapp = deleteapp;
+        this._timeout = timeout;
+        this._directories = directories;
+        this._includescheck = includescheck;
+        this._includes = !includescheck ? null : includes;
+        this._excludescheck = excludescheck;
+        this._excludes = !excludescheck ? null : excludes;
     }
 
     @Override
@@ -140,27 +140,27 @@ public class NirmataBuilder extends Builder implements SimpleBuildStep {
         throws InterruptedException, IOException {
 
         NirmataCredentials credentials = new NirmataCredentials();
-        Optional<StringCredentials> credential = credentials.getCredential(apikey);
-        NirmataClient client = new NirmataClient(endpoint, credential.get().getSecret().getPlainText());
+        Optional<StringCredentials> credential = credentials.getCredential(_apikey);
+        NirmataClient client = new NirmataClient(_endpoint, credential.get().getSecret().getPlainText());
 
         Action action = new Action(client, listener);
 
-        if (ActionType.UPDATE_ENV_APP.getAction().equals(actionType)) {
+        if (ActionType.UPDATE_ENV_APP.getAction().equals(_actionType)) {
 
-            String appendedDirectoryPath = FileOperations.appendBasePath(workspace.getRemote(), directories);
-            action.buildStep(ActionType.UPDATE_ENV_APP, environment, application, appendedDirectoryPath,
-                !includescheck ? null : includes, !excludescheck ? null : excludes);
-        } else if (ActionType.UPDATE_CAT_APP.getAction().equals(actionType)) {
+            String appendedDirectoryPath = FileOperations.appendBasePath(workspace.getRemote(), _directories);
+            action.buildStep(ActionType.UPDATE_ENV_APP, _environment, _application, appendedDirectoryPath,
+                !_includescheck ? null : _includes, !_excludescheck ? null : _excludes);
+        } else if (ActionType.UPDATE_CAT_APP.getAction().equals(_actionType)) {
 
-            String appendedDirectoryPath = FileOperations.appendBasePath(workspace.getRemote(), directories);
-            action.buildStep(ActionType.UPDATE_CAT_APP, catalog, appendedDirectoryPath,
-                !includescheck ? null : includes, !excludescheck ? null : excludes);
-        } else if (ActionType.DEPLOY_ENV_APP.getAction().equals(actionType)) {
+            String appendedDirectoryPath = FileOperations.appendBasePath(workspace.getRemote(), _directories);
+            action.buildStep(ActionType.UPDATE_CAT_APP, _catalog, appendedDirectoryPath,
+                !_includescheck ? null : _includes, !_excludescheck ? null : _excludes);
+        } else if (ActionType.DEPLOY_ENV_APP.getAction().equals(_actionType)) {
 
-            action.buildStep(ActionType.DEPLOY_ENV_APP, environment, catalog, runname);
-        } else if (ActionType.DELETE_ENV_APP.getAction().equals(actionType)) {
+            action.buildStep(ActionType.DEPLOY_ENV_APP, _environment, _catalog, _runname);
+        } else if (ActionType.DELETE_ENV_APP.getAction().equals(_actionType)) {
 
-            action.buildStep(ActionType.DELETE_ENV_APP, environment, deleteapp);
+            action.buildStep(ActionType.DELETE_ENV_APP, _environment, _deleteapp);
         } else {
 
             throw new AbortException("Unknown action request!");

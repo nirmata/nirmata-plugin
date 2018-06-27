@@ -5,23 +5,23 @@ import java.util.List;
 
 public class Response {
 
-    private Status status;
-    private List<Model> model;
+    private Status _status;
+    private List<Model> _model;
 
     public Status getStatus() {
-        return status;
+        return _status;
     }
 
     public void setStatus(Status status) {
-        this.status = status;
+        this._status = status;
     }
 
     public List<Model> getModel() {
-        return model;
+        return _model;
     }
 
     public void setModel(List<Model> model) {
-        this.model = model;
+        this._model = model;
     }
 
 }

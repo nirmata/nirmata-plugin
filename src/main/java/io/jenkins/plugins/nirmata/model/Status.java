@@ -3,28 +3,28 @@ package io.jenkins.plugins.nirmata.model;
 
 public class Status {
 
-    private int statusCode;
-    private String message;
+    private int _statusCode;
+    private String _message;
 
     public Status(int statusCode, String message) {
-        this.statusCode = statusCode;
-        this.message = message;
+        this._statusCode = statusCode;
+        this._message = message;
     }
 
     public String getMessage() {
-        return message;
+        return _message;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this._message = message;
     }
 
     public int getStatusCode() {
-        return statusCode;
+        return _statusCode;
     }
 
     public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+        this._statusCode = statusCode;
     }
 
 }

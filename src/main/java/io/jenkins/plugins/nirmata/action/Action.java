@@ -15,20 +15,20 @@ import io.jenkins.plugins.nirmata.util.NirmataClient;
 
 public final class Action {
 
-    private final NirmataClient client;
-    private final TaskListener listener;
+    private final NirmataClient _client;
+    private final TaskListener _listener;
 
     public Action(NirmataClient client, TaskListener listener) {
-        this.client = client;
-        this.listener = listener;
+        this._client = client;
+        this._listener = listener;
     }
 
     public NirmataClient getClient() {
-        return client;
+        return _client;
     }
 
     public TaskListener getListener() {
-        return listener;
+        return _listener;
     }
 
     public void buildStep(ActionType type, String... vargs) throws AbortException {
@@ -51,11 +51,11 @@ public final class Action {
     }
 
     private void printActionInfo(String... vargs) {
-        listener.getLogger().println();
+        _listener.getLogger().println();
         for (String varg : vargs) {
-            listener.getLogger().println(varg);
+            _listener.getLogger().println(varg);
         }
-        listener.getLogger().println();
+        _listener.getLogger().println();
     }
 
     private void update(String catalog, String directories, String includes, String excludes) throws AbortException {
@@ -66,7 +66,7 @@ public final class Action {
             "Excludes: " + excludes);
 
         String applicationId = null;
-        List<Model> catalogApplications = client.getAppsFromCatalog().getModel();
+        List<Model> catalogApplications = _client.getAppsFromCatalog().getModel();
 
         if (catalogApplications != null && !catalogApplications.isEmpty()) {
             for (Model e : catalogApplications) {
@@ -75,7 +75,7 @@ public final class Action {
                 }
             }
         } else {
-            listener.getLogger().println("ERROR: Catalog applications list is empty");
+            _listener.getLogger().println("ERROR: Catalog applications list is empty");
         }
 
         if (!Strings.isNullOrEmpty(applicationId)) {
@@ -83,7 +83,7 @@ public final class Action {
             List<String> listOfFiles = LocalRepo.getFilesInDirectory(listOfDirectories, includes, excludes);
             String yamlStr = FileOperations.appendFiles(listOfFiles);
 
-            HTTPInfo result = client.updateAppsInCatalog(applicationId, yamlStr);
+            HTTPInfo result = _client.updateAppsInCatalog(applicationId, yamlStr);
             printActionInfo(result.toString());
         } else {
             throw new AbortException(
@@ -102,7 +102,7 @@ public final class Action {
             "Excludes: " + excludes);
 
         String environmentId = null;
-        List<Model> environments = client.getEnvironments().getModel();
+        List<Model> environments = _client.getEnvironments().getModel();
 
         if (environments != null && !environments.isEmpty()) {
             for (Model e : environments) {
@@ -111,7 +111,7 @@ public final class Action {
                 }
             }
         } else {
-            listener.getLogger().println("ERROR: Environments list is empty");
+            _listener.getLogger().println("ERROR: Environments list is empty");
         }
 
         if (Strings.isNullOrEmpty(environmentId)) {
@@ -120,7 +120,7 @@ public final class Action {
         }
 
         String applicationId = null;
-        List<Model> applications = client.getAppsFromEnvironment(environmentId).getModel();
+        List<Model> applications = _client.getAppsFromEnvironment(environmentId).getModel();
 
         if (applications != null && !applications.isEmpty()) {
             for (Model e : applications) {
@@ -129,7 +129,7 @@ public final class Action {
                 }
             }
         } else {
-            listener.getLogger().println("ERROR: Applications list is empty");
+            _listener.getLogger().println("ERROR: Applications list is empty");
         }
 
         if (!Strings.isNullOrEmpty(applicationId)) {
@@ -137,7 +137,7 @@ public final class Action {
             List<String> listOfFiles = LocalRepo.getFilesInDirectory(listOfDirectories, includes, excludes);
             String yamlStr = FileOperations.appendFiles(listOfFiles);
 
-            HTTPInfo result = client.updateAppsInEnvironment(applicationId, yamlStr);
+            HTTPInfo result = _client.updateAppsInEnvironment(applicationId, yamlStr);
             printActionInfo(result.toString());
         } else {
             throw new AbortException(
@@ -152,7 +152,7 @@ public final class Action {
             "Application: " + application);
 
         String applicationId = null;
-        List<Model> catalogApplications = client.getAppsFromCatalog().getModel();
+        List<Model> catalogApplications = _client.getAppsFromCatalog().getModel();
 
         if (catalogApplications != null && !catalogApplications.isEmpty()) {
             for (Model e : catalogApplications) {
@@ -161,11 +161,11 @@ public final class Action {
                 }
             }
         } else {
-            listener.getLogger().println("ERROR: Applications list is empty");
+            _listener.getLogger().println("ERROR: Applications list is empty");
         }
 
         if (!Strings.isNullOrEmpty(applicationId)) {
-            HTTPInfo result = client.deployAppsInEnvironment(applicationId, environment, application);
+            HTTPInfo result = _client.deployAppsInEnvironment(applicationId, environment, application);
             printActionInfo(result.toString());
         } else {
             throw new AbortException(
@@ -180,7 +180,7 @@ public final class Action {
             "Application: " + application);
 
         String environmentId = null;
-        List<Model> environments = client.getEnvironments().getModel();
+        List<Model> environments = _client.getEnvironments().getModel();
 
         if (environments != null && !environments.isEmpty()) {
             for (Model e : environments) {
@@ -189,7 +189,7 @@ public final class Action {
                 }
             }
         } else {
-            listener.getLogger().println("ERROR: Environments list is empty");
+            _listener.getLogger().println("ERROR: Environments list is empty");
         }
 
         if (Strings.isNullOrEmpty(environmentId)) {
@@ -198,7 +198,7 @@ public final class Action {
         }
 
         String applicationId = null;
-        List<Model> applications = client.getAppsFromEnvironment(environmentId).getModel();
+        List<Model> applications = _client.getAppsFromEnvironment(environmentId).getModel();
 
         if (applications != null && !applications.isEmpty()) {
             for (Model e : applications) {
@@ -207,11 +207,11 @@ public final class Action {
                 }
             }
         } else {
-            listener.getLogger().println("ERROR: Applications list is empty");
+            _listener.getLogger().println("ERROR: Applications list is empty");
         }
 
         if (!Strings.isNullOrEmpty(applicationId)) {
-            HTTPInfo result = client.deleteAppsFromEnvironment(applicationId);
+            HTTPInfo result = _client.deleteAppsFromEnvironment(applicationId);
             printActionInfo(result.toString());
         } else {
             throw new AbortException(
