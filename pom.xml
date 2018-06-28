@@ -13,7 +13,7 @@
 
 	<groupId>io.jenkins.plugins</groupId>
 	<artifactId>nirmata</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>hpi</packaging>
 	<name>Nirmata Plugin</name>
 	<description>Enables synchronization of YAML/JSON files stored in a Git repository with a Kubernetes application managed on the Nirmata platform</description>

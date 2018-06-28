@@ -194,7 +194,7 @@ public class NirmataBuilder extends Builder implements SimpleBuildStep {
                 NirmataClient client = new NirmataClient(endpoint, credential.get().getSecret().getPlainText());
                 status = client.getEnvironments().getStatus();
 
-                return (status != null && status.getStatusCode() != HttpServletResponse.SC_ACCEPTED)
+                return (status != null && status.getStatusCode() != HttpServletResponse.SC_OK)
                     ? FormValidation.error(String.format("%s (%s)", status.getMessage(), status.getStatusCode()))
                     : FormValidation.ok();
             } else {
@@ -245,7 +245,7 @@ public class NirmataBuilder extends Builder implements SimpleBuildStep {
             environments = client.getEnvironments().getModel();
             status = client.getEnvironments().getStatus();
 
-            if (status.getStatusCode() == HttpServletResponse.SC_ACCEPTED) {
+            if (status.getStatusCode() == HttpServletResponse.SC_OK) {
                 if (environments != null) {
                     for (Model model : environments) {
                         models.add(model.getName());
@@ -280,7 +280,7 @@ public class NirmataBuilder extends Builder implements SimpleBuildStep {
                 applications = client.getAppsFromEnvironment(environmentId).getModel();
                 status = client.getAppsFromEnvironment(environmentId).getStatus();
 
-                if (status.getStatusCode() == HttpServletResponse.SC_ACCEPTED) {
+                if (status.getStatusCode() == HttpServletResponse.SC_OK) {
                     if (!(applications == null || applications.isEmpty())) {
                         for (Model model : applications) {
                             models.add(model.getName());
@@ -305,7 +305,7 @@ public class NirmataBuilder extends Builder implements SimpleBuildStep {
             catalogApplications = client.getAppsFromCatalog().getModel();
             status = client.getAppsFromCatalog().getStatus();
 
-            if (status.getStatusCode() == HttpServletResponse.SC_ACCEPTED) {
+            if (status.getStatusCode() == HttpServletResponse.SC_OK) {
                 if (catalogApplications != null) {
                     for (Model model : catalogApplications) {
                         models.add(model.getName());
@@ -340,7 +340,7 @@ public class NirmataBuilder extends Builder implements SimpleBuildStep {
                 applications = client.getAppsFromEnvironment(environmentId).getModel();
                 status = client.getAppsFromEnvironment(environmentId).getStatus();
 
-                if (status.getStatusCode() == HttpServletResponse.SC_ACCEPTED) {
+                if (status.getStatusCode() == HttpServletResponse.SC_OK) {
                     if (!(applications == null || applications.isEmpty())) {
                         for (Model model : applications) {
                             models.add(model.getName());
