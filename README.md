@@ -14,4 +14,4 @@ You can learn more on [Nirmata Website](https://www.nirmata.com/)
 ## General information
 This Jenkins Plugin supports update/deployment/deletetion of applications in Nirmata.
 
-Repository has been moved and can be found [here](https://github.com/jenkinsci/nirmata-plugin)
+### Repository has been moved and maintained at https://github.com/jenkinsci/nirmata-plugin
