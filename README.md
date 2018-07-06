@@ -11,7 +11,4 @@ You can learn more on [Nirmata Website](https://www.nirmata.com/)
 3. Deployment of ephemeral applications
 4. Deletion of ephemeral applications
 
-## General information
-This Jenkins Plugin supports update/deployment/deletetion of applications in Nirmata.
-
 ### Repository has been moved and maintained at https://github.com/jenkinsci/nirmata-plugin
