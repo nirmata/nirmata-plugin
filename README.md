@@ -1,5 +1,4 @@
 # Nirmata Plugin
-------------
 This plugin enables synchronization of YAML/JSON files stored in a Git repository with a Kubernetes application managed on the Nirmata platform.
 
 Nirmata is a Kubernetes platform that enables enterprises to deliver a highly scalable, always-on container management platform, built on Kubernetes. Using Nirmata, enterprise teams can fully automate the delivery and management of applications. At Nirmata, our mission is to empower all enterprises to easily deliver and manage containerized applications across public and private clouds.
@@ -7,14 +6,12 @@ Nirmata is a Kubernetes platform that enables enterprises to deliver a highly sc
 You can learn more on [Nirmata Website](https://www.nirmata.com/)
 
 ## Features
-------------
 1. Update of running applications in the environment
 2. Update of applications in the catalog
 3. Deployment of ephemeral applications
 4. Deletion of ephemeral applications
 
 ## General information
-------------
 This Jenkins Plugin supports update/deployment/deletetion of applications in Nirmata.
 
 Repository has been moved and can be found [here](https://github.com/jenkinsci/nirmata-plugin)
