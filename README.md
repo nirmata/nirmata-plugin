@@ -1,3 +1,5 @@
+### Repository has been moved and maintained at https://github.com/jenkinsci/nirmata-plugin
+
 # Nirmata Plugin
 This plugin enables synchronization of YAML/JSON files stored in a Git repository with a Kubernetes application managed on the Nirmata platform.
 
@@ -11,4 +13,3 @@ You can learn more on [Nirmata Website](https://www.nirmata.com/)
 3. Deployment of ephemeral applications
 4. Deletion of ephemeral applications
 
-### Repository has been moved and maintained at https://github.com/jenkinsci/nirmata-plugin
